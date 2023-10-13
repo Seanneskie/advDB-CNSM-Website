@@ -10,14 +10,20 @@ const {
     deleteDepartmentById,
 } = require('../controllers/department.controller')
 
+
+// GET All Department
 router.get('/', getDepartmentsAll);
 
+// GET Single Department
 router.get('/:id', getDepartmentById);
 
+// POST Department
 router.post('/', createDepartment);
 
+// DELETE Department
 router.delete('/:id',  deleteDepartmentById);
 
-router.patch('/id', updateDepartmentById);
+// Update Department
+router.patch('/:id', updateDepartmentById);
 
 module.exports = router;

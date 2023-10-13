@@ -53,10 +53,10 @@ const getDepartmentById = async (req, res) => {
 const updateDepartmentById = async (req, res) => {
     const id = req.params.id;
     try {
-        const { name, dept_head, dept_building } = req.body;
+        const { name, dept_head, dept_bldg } = req.body;
 
         // Check if any of the required parameters are missing
-        if (!name || !dept_head || !dept_building) {
+        if (!name || !dept_head || !dept_bldg) {
             return res.status(400).json({ error: 'Missing one or more required parameters (name, dept_head, dept_building)' });
         }
 
@@ -77,11 +77,12 @@ const deleteDepartmentById = async (req, res) => {
         if (!department) {
             return res.status(404).json({ message: 'Department not found' });
         }
-        res.status(204).end();
+        res.status(204).json({ message: 'Department deleted successfully' }); // Add the success message here
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
+
 
 module.exports = {
     getDepartmentsAll,

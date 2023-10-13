@@ -12,6 +12,10 @@ const app = express();
 
 // routes setup
 const departmentRoutes = require('./routes/departmentRoute')
+const organizationRoutes = require('./routes/organizationRoute')
+const classRoutes = require('./routes/classRoute')
+const courseRoutes = require('./routes/courseRoute')
+const studentRoutes = require('./routes/studentRoute')
 
 // middleware
 app.use(express.json());
@@ -22,6 +26,10 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/api/department', departmentRoutes)
+app.use('/api/org', organizationRoutes)
+app.use('/api/class',classRoutes)
+app.use('/api/course', courseRoutes)
+app.use('/api/student', studentRoutes)
 
 // connect to db    
 mongoose.connect(process.env.MONGO_URI)
