@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Events } = require('../models/eventModel'); // Model Path
+const { Events } = require('../models/eventsModel'); // Model Path
 const { Organization } = require('../models/organizationModel'); // Import the Organization model
 const { Student } = require('../models/studentModel'); // Import the Student model
 
