@@ -1,0 +1,54 @@
+/* Card.css */
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px;
+    justify-content: space-between;
+  }
+  
+  .card {
+    border: 1px solid #780107; /* Add a border around the card */
+    border-radius: 10px; /* Increase the border radius for rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Apply a shadow for depth */
+    padding: 16px;
+    text-align: left;
+    background-color: #780107;
+    width: 300px;
+    margin: 16px;
+    margin-bottom: 20px;
+    transition: transform 0.2s; /* Add a subtle hover effect */
+  }
+  
+  .card:hover {
+    transform: scale(1.03); /* Scale the card on hover for a slight interaction */
+  }
+  
+  .card-image {
+    width: 300px;
+    max-height: 100px;
+    object-fit: fill;
+    border-radius: 10px 10px 0 0; /* Rounded corners for the top of the image */
+  }
+  
+  .card-content {
+    padding: 10px;
+  }
+  
+  .card-title {
+    font-size: 20px; /* Increase the font size for the title */
+    margin: 0;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 8px;
+    color: #fff;
+  }
+  
+  .card-description {
+    margin-top: 8px;
+    color: #fff;
+  }
+
+  .card-manage{
+    text-decoration: none; /* Remove the underline on hover */
+    color: #fff; /* Change the link color to your preference */
+  }

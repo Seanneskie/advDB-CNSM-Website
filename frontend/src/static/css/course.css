@@ -1,0 +1,94 @@
+/* CSS for Course Form */
+.course-form {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+}
+.CourseForm {
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    padding: 10px; 
+}
+
+.course-form h2 {
+    text-align: center;
+    color: #780107;
+}
+
+.course-form .input-field {
+    width: 250px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.course-form button {
+    background-color: #780107;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 50%;
+}
+
+.course-form button:hover {
+    background-color: #1D1B1E;
+}
+
+/* CSS for Course List Table */
+.table-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 750px;
+    margin: 0 auto;
+}
+
+.course-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.course-table th,
+.course-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.course-table th {
+    background-color: #780107;
+    color: #fff;
+}
+
+.course-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.course-table tr:hover {
+    background-color: #ddd;
+}
+
+/* CSS for styling buttons */
+button {
+    padding: 4px 8px;
+    background-color: #780107;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: #1D1B1E;
+}
+

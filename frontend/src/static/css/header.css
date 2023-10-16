@@ -1,0 +1,85 @@
+/* Header.css */
+
+    .header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center; /* Center-align text content */
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+    nav {
+        background-color: #F1F0EC;
+
+    }
+    nav ul {
+        list-style: none;
+        padding: 10px;
+        display: flex;
+    }
+
+    nav li {
+        margin-right: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #7C090F;
+    }
+
+    /* Style navigation links on hover */
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+
+    .logo {
+        max-width: 100px; /* Limit the maximum width of the image */
+        margin-right: 20px; /* Add some spacing between the image and text */
+    }
+
+    h1 {
+        margin: 0; /* Remove default margin to avoid spacing at the top */
+        color: #F1F0EC
+    }
+
+    .title-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .title-container h1 {
+        margin: 10px 0 !important; /* Adjust the margin to control the vertical spacing */
+        margin-bottom: -5px;
+
+    }
+
+    .title-container h2 {
+        margin: 5px 0 !important; /* Adjust the margin for paragraphs */
+        margin-top: -5px;
+        font-size: 16px;
+        color: #FFD700;
+    }
+
+
+    .header-container {
+        display: flex;
+        justify-content: center; /* Horizontally center content */
+        align-items: center; /* Vertically center content */
+        background-color: #7C090F;
+    }
+    .logo {
+        max-width: 100px; /* Limit the maximum width of the image */
+        margin-right: 20px; /* Add some spacing between the image and text */
+
+    }
+
+    .msulogo{
+        max-width: 100px; /* Limit the maximum width of the image */
+        margin-left: 20px; /* Add some spacing between the image and text */
+
+    }
+
+
+

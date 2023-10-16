@@ -1,0 +1,140 @@
+/* CSS for Org List Table */
+
+.OrgForm {
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    padding: 10px; 
+}
+.table-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 750px;
+    margin: 0 auto;
+  }
+  
+  .org-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .org-table th,
+  .org-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .org-table th {
+    background-color: #780107;
+    color: #fff;
+  }
+  
+  .org-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .org-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  /* CSS for Edit Organization Form */
+  .edit-organization-form {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  .edit-organization-form h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .edit-organization-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-organization-form .input-field {
+    width: 250px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .edit-organization-form .submit-button {
+    background-color: #780107;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 50%;
+  }
+  
+  .edit-organization-form .submit-button:hover {
+    background-color: #1D1B1E;
+  }
+  
+
+  /* CSS for Org Form */
+.org-form {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  .org-form h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .org-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .org-form .input-field {
+    width: 250px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .org-form .input-field:focus {
+    border-color: #780107; /* Change border color on focus */
+  }
+  
+  .org-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff; /* Set a white background for the select */
+  }
+  
+  .org-form .submit-button {
+    background-color: #780107;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 50%;
+  }
+  
+  .org-form .submit-button:hover {
+    background-color: #1D1B1E;
+  }
+  

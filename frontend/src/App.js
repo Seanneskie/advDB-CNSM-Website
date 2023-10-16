@@ -1,24 +1,49 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+
+// Import your Header component
+import Dashboard from './pages/dashboard'
+import Department from './pages/department';
+import Course from './pages/course';
+import Organization from './pages/organization';
+import Classification from './pages/class';
+import Student from './pages/student';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+ 
+        
+        <main>
+          <Routes>
+            <Route path="/" element={<Dashboard />}>   {/* Content for the Home page */} </Route>
+            <Route path="/about">
+              {/* Content for the About page */}
+            </Route>
+            <Route path="/student" element={<Student />} >
+              {/* Content for the Student page */}
+            </Route>
+            <Route path= "/class"  element={<Classification />}>
+              {/* Content for the Student page */}
+            </Route>
+            <Route path="/department" element={<Department />} >
+              {/* Content for the Student page */}
+            </Route>
+            <Route path="/course" element={<Course />} >
+              {/* Content for the Student page */}
+            </Route>
+            <Route path="/org" element={<Organization />} >
+              {/* Content for the Student page */}
+            </Route>
+            <Route path="/contact">
+              {/* Content for the Contact page */}
+            </Route>
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
