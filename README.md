@@ -2,10 +2,10 @@
 
 
 ## Introduction - How to Install
-Open Visual Code Studio 
-Open Folder and Locate the folder
-Open  Terminal by clicking View > Terminal on the Top Left side
-Open two(2) terminal, one for backend and one for frontend
+Open Visual Code Studio <br />
+Open Folder and Locate the folder <br />
+Open  Terminal by clicking View > Terminal on the Top Left side <br />
+Open two(2) terminal, one for backend and one for frontend <br />
 
 ### Setup backend node modules (1st Terminal)
 ```bash
