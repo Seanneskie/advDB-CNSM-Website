@@ -20,7 +20,7 @@ npm install
 ```
 
 ## How to Run
-### 1. Run Backend Server
+### 1. Run Backend Server (1st Terminal)
 Without Nodemon Method
 ```bash
 cd backend
@@ -32,7 +32,7 @@ cd backend
 nodemon run dev
 ```
 
-### 2. Run Frontend Server
+### 2. Run Frontend Server (2nd Terminal)
 ```bash
 cd frontend
 npm start
