@@ -23,7 +23,7 @@ function Dashboard() {
                 <Card title="Course" description="Count" imageUrl={sit} href="/course"/>
                 <Card title="Department" description="Count" imageUrl={elj1} href="/department" />
                 <Card title="Organization" description="Count" imageUrl={elj2} href="/org" />
-                <Card title="Events" description="Count" imageUrl= {elj3} />
+                <Card title="Events" description="Count" imageUrl= {elj3} href="/event" />
                 <Card title="Fines" description="Count" imageUrl= {elj4} />
                 <Card title="Project Proposals" description="Count" imageUrl= {elj5}/>
                 <Card title="Classification" description="Count" imageUrl= {elj5} href="/class"/>

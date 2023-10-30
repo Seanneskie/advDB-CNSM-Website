@@ -6,14 +6,20 @@ const StudentForm = () => {
     last_name: '',
     middle_name: '',
     year_level: '',
-    year_enrolled: '',
+    student_id: '',
     department: '',
     classification: '',
     course: '',
-    address: '',
+    house_no: '',
+    street: '',
+    barangay: '',
+    city: '',
+    province: '',
+    zip_code: '',
     contact: '',
     blood_type: '',
     email: '',
+    image: '', 
   });
 
   const [departments, setDepartments] = useState([]);
@@ -53,11 +59,22 @@ const StudentForm = () => {
   }, []);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value, type, files } = e.target;
+  
+    if (type === 'file') {
+      // Handle file input separately
+      setFormData({
+        ...formData,
+        [name]: files[0], // Assuming you allow only one image to be selected
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -87,8 +104,11 @@ const StudentForm = () => {
 
   return (
     <div className="student-form">
-      <h2>Create a Student</h2>
-      <form onSubmit={handleSubmit}>
+      <h2>STUDENT REGISTRATION FORM</h2>
+      <form onSubmit={handleSubmit}   encType="multipart/form-data">
+        <label><h2>Full Name</h2></label>
+        <hr></hr>
+        <div className='name-container'>   
         <input
           type="text"
           name="first_name"
@@ -115,20 +135,100 @@ const StudentForm = () => {
         />
         <input
           type="text"
+          name="Suffix"
+          value={formData.suffix}
+          onChange={handleChange}
+          placeholder="Suffix"
+          className="input-field"
+        />
+        </div>
+        <label><h2>Address</h2></label>
+        <hr></hr>
+
+        <div className='address-container'>
+              
+          <input
+            type="text"
+            name="house_number"
+            value={formData.address}
+            onChange={handleChange}
+            placeholder="House No."
+            className="input-field"
+          />
+           <input
+            type="text"
+            name="street"
+            value={formData.address}
+            onChange={handleChange}
+            placeholder="Street"
+            className="input-field"
+          />
+           <input
+            type="text"
+            name="caranggay"
+            value={formData.address}
+            onChange={handleChange}
+            placeholder="Baranggay"
+            className="input-field"
+          />
+           <input
+            type="text"
+            name="city"
+            value={formData.address}
+            onChange={handleChange}
+            placeholder="City"
+            className="input-field"
+          />
+           <input
+            type="text"
+            name="province"
+            value={formData.address}
+            onChange={handleChange}
+            placeholder="Province"
+            className="input-field"
+          />
+
+          <input
+            type="text"
+            name="zip"
+            value={formData.address}
+            onChange={handleChange}
+            placeholder="Zip Code"
+            className="input-field"
+          />
+          
+          
+          
+        </div>
+
+        <div className='address-container'>
+        <select
           name="year_level"
           value={formData.year_level}
           onChange={handleChange}
-          placeholder="Year Level"
           className="input-field"
-        />
+        >
+          <option value="">Year Level</option>
+          <option value="1st year">1st year</option>
+          <option value="2nd year">2nd year</option>
+          <option value="3rd year">3rd year</option>
+          <option value="4th year">4th year</option>
+        </select>
+
         <input
           type="text"
-          name="year_enrolled"
+          name="student-id"
           value={formData.year_enrolled}
           onChange={handleChange}
-          placeholder="Year Enrolled"
+          placeholder="Student ID Number"
           className="input-field"
         />
+
+
+        </div>
+       
+
+       
         <select
           name="department"
           value={formData.department}
@@ -168,14 +268,7 @@ const StudentForm = () => {
             </option>
           ))}
         </select>
-        <input
-          type="text"
-          name="address"
-          value={formData.address}
-          onChange={handleChange}
-          placeholder="Address"
-          className="input-field"
-        />
+       
         <input
           type="text"
           name="contact"
@@ -184,14 +277,7 @@ const StudentForm = () => {
           placeholder="Contact"
           className="input-field"
         />
-        <input
-          type="text"
-          name="blood_type"
-          value={formData.blood_type}
-          onChange={handleChange}
-          placeholder="Blood Type"
-          className="input-field"
-        />
+      
         <input
           type="text"
           name="email"
@@ -200,6 +286,13 @@ const StudentForm = () => {
           placeholder="Email"
           className="input-field"
         />
+
+        <input
+          type="file"
+          name="image"
+          onChange={handleChange}
+          accept="image/*" // Allow only image files
+        />  
         <button type="submit" className="submit-button">
           Create Student
         </button>

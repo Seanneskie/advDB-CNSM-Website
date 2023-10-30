@@ -1,0 +1,52 @@
+/* CSS for styling the EventForm component */
+
+/* Container for the event form */
+.event-form-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+  }
+  
+  input.input-field {
+    width: 275px;
+  }
+
+  input.select-field {
+    width: 275px;
+  }
+
+  /* Input and select field styles */
+  .input-field {
+    width: 275px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .select-field {
+    width: 275px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Submit button styles */
+  .submit-button {
+    background-color: #780107;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .submit-button:hover {
+    background-color: #1D1B1E;
+  }
+  

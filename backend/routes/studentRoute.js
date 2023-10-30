@@ -18,7 +18,7 @@ router.post('/', createStudent);
 router.get('/:id', getStudentById);
 
 // Route for updating a specific student by ID
-router.put('/:id', updateStudentById);
+router.patch('/:id', updateStudentById);
 
 // Route for deleting a specific student by ID
 router.delete('/:id', deleteStudentById);

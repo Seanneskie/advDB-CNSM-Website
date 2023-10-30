@@ -13,7 +13,7 @@ const studentSchema = new Schema({
     last_name: String,
     middle_name: String,
     year_level: String,
-    year_enrolled: String,
+    student_id: String,
     department: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Department'
@@ -26,7 +26,12 @@ const studentSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Course'
     },
-    address: String,
+    house_no: String,
+    street: String,
+    baranggay: String,
+    city: String,
+    province: String,
+    zip_code: String,
     contact:  String,
     blood_type: String,
     email: String,

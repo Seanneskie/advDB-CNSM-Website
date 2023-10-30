@@ -9,6 +9,8 @@ import Course from './pages/course';
 import Organization from './pages/organization';
 import Classification from './pages/class';
 import Student from './pages/student';
+import Profile from './pages/profile';
+import Event from './pages/event';
 
 function App() {
   return (
@@ -38,6 +40,12 @@ function App() {
               {/* Content for the Student page */}
             </Route>
             <Route path="/contact">
+              {/* Content for the Contact page */}
+            </Route>
+            <Route path="/event" element={<Event />}>
+              {/* Content for the Contact page */}
+            </Route>
+            <Route path="/profile/:id" element={<Profile /> }>
               {/* Content for the Contact page */}
             </Route>
           </Routes>

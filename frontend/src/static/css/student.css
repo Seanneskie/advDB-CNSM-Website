@@ -4,11 +4,48 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 300px;
+    width: 1500px;
     margin: 0 auto;
   }
-  
-  .input-field, .select-field {
+  .name-container input{
+    width: 350px;
+    margin-left: 30px;
+  }
+  input.input-field {
+    width: 275px;
+  }
+  label {
+    text-align: left;
+  }
+  .name-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .address-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .address-container input[name=house_number]{
+      width: 500px;
+  }
+  .address-container input[name=city]{
+    width: 300px;
+  }
+  .address-container input[name=province]{
+    width: 300px;
+  }
+  .address-container input[name=zip]{
+    width: 150px;
+  }
+
+
+  .input-field, .select-field, input.input-field {
     width: 250px;
     padding: 10px;
     margin: 5px 0;
@@ -79,6 +116,10 @@
     margin-left: 10px;
   }
   
+  .link-profile {
+    text-decoration: none;
+    color: #fff; /* Change to your preferred text color */
+  }
   button:hover {
     background-color: #1D1B1E;
   }

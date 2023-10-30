@@ -14,6 +14,10 @@
     margin: 0 auto;
   }
   
+  input.input-field {
+    width: 275px;
+  }
+
   .input-field {
     width: 250px;
     padding: 10px;

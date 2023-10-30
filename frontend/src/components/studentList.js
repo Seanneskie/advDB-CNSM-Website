@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const StudentList = () => {
   const [students, setStudents] = useState([]);
@@ -143,13 +144,13 @@ const StudentList = () => {
               <td>{departments.find((department) => department._id === student.department)?.name || "Unknown" }</td> {/* Assuming "department" is a reference to a department with a "name" field */}
               <td>{classifications.find((classification) => classification._id === student.classification)?.description || "Unknown" } </td> {/* Assuming "classification" has a "description" field */}
               <td>{courses.find((course) => course._id === student.course)?.name || "Unknown"}</td> {/* Assuming "course" is a reference to a course with a "name" field */}
-              <td>{student.address}</td>
               <td>{student.contact}</td>
               <td>{student.blood_type}</td>
               <td>{student.email}</td>
               <td>
                 <button onClick={() => handleEdit(student._id)}>Edit</button>
                 <button onClick={() => handleDelete(student._id)}>Delete</button>
+                <button><Link to={`/profile/${student._id}`} className="link-profile">Profile</Link></button>
               </td>
             </tr>
           ))}
