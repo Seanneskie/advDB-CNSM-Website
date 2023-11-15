@@ -1,0 +1,108 @@
+.container-1 h1{
+    color: red;
+}
+
+.main-fine {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    color: red;
+    margin:30px
+}
+
+.student-profile{
+    width: 30%;
+    height: 700px;
+    border:none;
+    background-color: #7C090F ;
+    border-radius: 20px;
+    margin: 10px;
+    color: #F1F0EC;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-profile{
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.container-profile img {
+    border-radius: 100%;
+}
+
+.container-profile h1 {
+    color: #F1F0EC;
+    text-transform: uppercase;
+}
+
+.container-information{
+    padding: 5px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.container-information label{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.container-information p{
+   color: #fff;
+   font-size: 15px;
+}
+
+.fines-table{
+    width: 40%;
+    height: 700px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin: 10px;
+    background-color: #1D1B1E;
+}
+
+.fines-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.fines-table th {
+    background-color: #7C090F;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+    color: #F1F0EC;
+}
+
+/* Style the table rows */
+.fines-table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+    color: #F1F0EC;
+    background-color: rgba(197, 13, 22, 0.937);
+}       
+
+/* Style even rows with a background color */
+.fines-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.payment{
+    width: 20%;
+    height: 700px;
+    border-radius: 2px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin: 10px;
+    background-color: #7C090F;
+    color: #F1F0EC;
+}
+
+
+td.add-payment-button{
+    width: 100%;
+    text-align: right;
+}
+

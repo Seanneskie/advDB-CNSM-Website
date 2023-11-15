@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-// model imports for foreign keys
+// Model imports for foreign keys
 const Organization = require('./organizationModel');
 const Events = require('./eventsModel');
+const Student = require('./studentModel');
 
 const finesSchema = new Schema({
     name: String,
@@ -12,14 +13,14 @@ const finesSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Organization'
     },
-    event: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Events'
-    },
     date_of_penalty: Date,
-    amount: Number
-})
+    amount: Number,
+    student: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Student'
+    }
+});
 
-const Fines = mongoose.model('Fines', finesSchema)
+const Fines = mongoose.model('Fines', finesSchema);
 
-module.exports = {Fines}
+module.exports = { Fines };

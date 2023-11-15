@@ -46,6 +46,8 @@ app.use('/api/vote', voteRoutes)
 app.use('/api/proposal', projectProposalRoutes)
 
 
+
+
 // connect to db    
 mongoose.connect(process.env.MONGO_URI)
     .then(()=>{

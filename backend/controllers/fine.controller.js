@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { Fines } = require('../models/finesModel'); // Model Path
-const { Organization } = require('../models/organizationModel'); // Import the Organization model
-const { Events } = require('../models/eventsModel'); // Import the Events model
+const { Fines } = require('../models/finesModel');
+const { Organization } = require('../models/organizationModel');
+const { Events } = require('../models/eventsModel');
 
 // GET all fines
 const getFinesAll = async (req, res) => {
@@ -17,25 +17,23 @@ const getFinesAll = async (req, res) => {
 // CREATE fine
 const createFine = async (req, res) => {
     try {
-        const { name, organization, event, date_of_penalty, amount } = req.body;
+        const { name, organization, date_of_penalty, amount } = req.body;
 
         // Check if any of the required parameters are missing
-        if (!name || !organization || !event || !date_of_penalty || !amount) {
-            return res.status(400).json({ error: 'Missing one or more required parameters (name, organization, event, date_of_penalty, amount)' });
+        if (!name || !organization || !date_of_penalty || !amount) {
+            return res.status(400).json({ error: 'Missing one or more required parameters (name, organization, date_of_penalty, amount)' });
         }
 
-        // Validate that organization and event references exist
+        // Validate that organization reference exists
         const organizationExists = await Organization.findById(organization);
-        const eventExists = await Events.findById(event);
 
-        if (!organizationExists || !eventExists) {
-            return res.status(400).json({ error: 'Invalid organization or event reference' });
+        if (!organizationExists) {
+            return res.status(400).json({ error: 'Invalid organization reference' });
         }
 
         const fine = new Fines({
             name,
             organization,
-            event,
             date_of_penalty,
             amount,
         });
@@ -65,19 +63,18 @@ const getFineById = async (req, res) => {
 const updateFineById = async (req, res) => {
     const id = req.params.id;
     try {
-        const { name, organization, event, date_of_penalty, amount } = req.body;
+        const { name, organization, date_of_penalty, amount } = req.body;
 
         // Check if any of the required parameters are missing
-        if (!name || !organization || !event || !date_of_penalty || !amount) {
-            return res.status(400).json({ error: 'Missing one or more required parameters (name, organization, event, date_of_penalty, amount)' });
+        if (!name || !organization || !date_of_penalty || !amount) {
+            return res.status(400).json({ error: 'Missing one or more required parameters (name, organization, date_of_penalty, amount)' });
         }
 
-        // Validate that organization and event references exist
+        // Validate that organization reference exists
         const organizationExists = await Organization.findById(organization);
-        const eventExists = await Events.findById(event);
 
-        if (!organizationExists || !eventExists) {
-            return res.status(400).json({ error: 'Invalid organization or event reference' });
+        if (!organizationExists) {
+            return res.status(400).json({ error: 'Invalid organization reference' });
         }
 
         const fine = await Fines.findByIdAndUpdate(id, req.body, { new: true });

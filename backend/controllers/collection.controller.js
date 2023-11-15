@@ -18,7 +18,7 @@ const createCollection = async (req, res) => {
         const { student, attendance, total } = req.body;
 
         // Check if any of the required parameters are missing
-        if (!student || !attendance || !total) {
+        if (!student || !attendance) {
             return res.status(400).json({ error: 'Missing one or more required parameters (student, attendance, total)' });
         }
 

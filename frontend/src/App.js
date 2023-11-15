@@ -11,6 +11,8 @@ import Classification from './pages/class';
 import Student from './pages/student';
 import Profile from './pages/profile';
 import Event from './pages/event';
+import Fines from './pages/fines';
+import FinesProfile from './pages/fines-profile';
 
 function App() {
   return (
@@ -43,6 +45,12 @@ function App() {
               {/* Content for the Contact page */}
             </Route>
             <Route path="/event" element={<Event />}>
+              {/* Content for the Contact page */}
+            </Route>
+            <Route path="/fines" element={<Fines />}>
+              {/* Content for the Contact page */}
+            </Route>
+            <Route path="/fines-profile/:studentId" element={<FinesProfile />}>
               {/* Content for the Contact page */}
             </Route>
             <Route path="/profile/:id" element={<Profile /> }>
