@@ -90,7 +90,7 @@
 
 .payment{
     width: 20%;
-    height: 700px;
+    height: 660px;
     border-radius: 2px;
     margin: 10px;
     border: 1px solid #ddd;
@@ -98,6 +98,7 @@
     margin: 10px;
     background-color: #7C090F;
     color: #F1F0EC;
+    padding: 20px;
 }
 
 
@@ -106,3 +107,47 @@ td.add-payment-button{
     text-align: right;
 }
 
+
+.payment table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .payment th, .payment td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .payment th {
+    background-color: #7C090F;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+    color: #F1F0EC;
+  }
+  
+  .payment p {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  .payment button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .payment button:hover {
+    background-color: #45a049;
+  }
+  
+  .payment-modal-container {
+    margin-top: 20px;
+  }
+  

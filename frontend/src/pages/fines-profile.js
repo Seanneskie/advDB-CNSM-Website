@@ -12,6 +12,7 @@ function FinesProfile() {
     const { studentId } = useParams();
     const [paymentRows, setPaymentRows] = useState([]);
     const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
+    const totalAmount = paymentRows.reduce((total, row) => total + row.amount, 0);
 
     const openPaymentModal = () => {
         setPaymentModalOpen(true);
@@ -38,9 +39,6 @@ function FinesProfile() {
             .catch((error) => console.error(error));
     }, [studentId]);
 
-
-
-  
 
     // Fetch Course
     useEffect(() => { 
@@ -109,16 +107,15 @@ function FinesProfile() {
 
                 <div className='payment'>
                     <h2>Payment</h2>
-                    <p>Total Fines: {student.totalFines || 0}</p>
                     <div>
                         
                     </div>
                     <table>
                         <thead>
                         <tr>
-                            <th>Event Name</th>
-                            <th>Description</th>
-                            <th>Organization</th>
+                            <th>Event</th>
+                            <th>Desc.</th>
+                            <th>Org</th>
                             <th>Amount</th>
                         </tr>
                         </thead>
@@ -133,7 +130,7 @@ function FinesProfile() {
                         ))}
                         </tbody>
                     </table>
-
+                    <p>Total Fines: {totalAmount}</p>
                     <button onClick={openPaymentModal}>Open Payment Modal</button>
                     <div className="payment-modal-container">
                         <PaymentMethodModal
