@@ -1,26 +1,18 @@
 const mongoose = require('mongoose');
-
 const Schema = mongoose.Schema;
 
-// Model imports for foreign keys
-const Organization = require('./organizationModel');
-const Events = require('./eventsModel');
-const Student = require('./studentModel');
-
-const finesSchema = new Schema({
-    name: String,
-    organization: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Organization'
-    },
-    date_of_penalty: Date,
-    amount: Number,
-    student: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Student'
-    }
+const FinesSchema = new Schema({
+  name: String,
+  organization: { type: Schema.Types.ObjectId, ref: 'Organization' },
+  event: String,
+  date_of_penalty: Date,
+  amount: Number,
+  student: { type: Schema.Types.ObjectId, ref: 'Student' },
+  description: String,
+  status: Boolean,
+  // Other fields
 });
 
-const Fines = mongoose.model('Fines', finesSchema);
+const Fines = mongoose.model('Fines', FinesSchema);
 
 module.exports = { Fines };
