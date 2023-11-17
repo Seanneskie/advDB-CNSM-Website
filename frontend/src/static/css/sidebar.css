@@ -1,0 +1,34 @@
+.app-container {
+    display: flex;
+    transition: margin-left 0.3s; /* Add a transition for margin-left */
+    text-align: left !important;
+    float: left !important;
+  }
+  
+  .sidebar {
+    list-style-type: none;
+    padding: 0;
+    transition: margin-left 0.3s; /* Add a transition for margin-left */
+    text-align: left !important;
+    float: left !important;
+    background-color: #F1F0EC;
+    height: 100vh;
+    width: 250px;
+  }
+
+  ul{
+    margin-top: 1.25px;
+  }
+  
+  .sidebar-open {
+    margin-left: 0; /* When sidebar is open, set margin-left to 0 */
+  }
+  
+  .visible {
+    display: block;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  

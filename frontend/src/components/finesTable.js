@@ -6,7 +6,8 @@ const FinesTable = ({ updatePaymentRows }) => {
     const [fines, setFines] = useState([]);
     const [selectedRows, setSelectedRows] = useState([]); // Initialize as an empty array
     const { studentId } = useParams();
-    const [paymentRows, setPaymentRows] = useState([]);
+    const setPaymentRows = useState([])[1];
+
 
     const handleAddToPayment = () => {
         try {
@@ -95,30 +96,37 @@ const FinesTable = ({ updatePaymentRows }) => {
                 </thead>
 
                 <tbody>
-                    {fines.map((fine, index) => (
-                        <tr key={index}>
-                            <td>
-                                <input
-                                    type="checkbox"
-                                    checked={selectedRows[index] || false} // Ensure it's not undefined
-                                    onChange={() => handleCheckboxChange(index)}
-                                />
-                            </td>
-                            <td>{fine.name}</td>
-                            <td>{fine.description}</td>
-                            <td>{fine.date_of_penalty.substring(0, 10)}</td>
-                            <td>{fine.date_of_penalty.substring(11, 16)}</td>
-                            <td>{fine.organization && fine.organization.name}</td>
-                            <td>{fine.status ? 'Paid' : 'Unpaid'}</td>
-                            <td>{fine.amount}</td>
-                        </tr>
-                    ))}
+                    {fines.map((fine, index) => {
+                        // Check if the fine is unpaid before rendering the row
+                        if (fine.status !== true ) {
+                            return (
+                                <tr key={index}>
+                                    <td>
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedRows[index] || false}
+                                            onChange={() => handleCheckboxChange(index)}
+                                        />
+                                    </td>
+                                    <td>{fine.name}</td>
+                                    <td>{fine.description}</td>
+                                    <td>{fine.date_of_penalty.substring(0, 10)}</td>
+                                    <td>{fine.date_of_penalty.substring(11, 16)}</td>
+                                    <td>{fine.organization && fine.organization.name}</td>
+                                    <td>{fine.status ? 'Paid' : 'Unpaid'}</td>
+                                    <td>{fine.amount}</td>
+                                </tr>
+                            );
+                        }
+
+                        return null; // Skip rendering for paid fines
+                    })}
                     {/* Sample row for testing */}
                     <tr>
                         <td>
                             <input
                                 type="checkbox"
-                                checked={selectedRows[fines.length] || false} // Ensure it's not undefined
+                                checked={selectedRows[fines.length] || false}
                                 onChange={() => handleCheckboxChange(fines.length)}
                             />
                         </td>

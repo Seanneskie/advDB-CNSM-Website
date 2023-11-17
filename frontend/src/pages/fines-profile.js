@@ -4,6 +4,7 @@ import '../static/css/fines.css';
 import Header from '../components/header';
 import PaymentMethodModal from '../components/paymentmodal';
 import FinesTable from '../components/finesTable';
+import Payment from '../components/payment';
 
 
 function FinesProfile() {
@@ -105,45 +106,19 @@ function FinesProfile() {
 
                 <FinesTable updatePaymentRows={updatePaymentRows} />
 
-                <div className='payment'>
-                    <h2>Payment</h2>
-                    <div>
-                        
-                    </div>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Event</th>
-                            <th>Desc.</th>
-                            <th>Org</th>
-                            <th>Amount</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {paymentRows.map((rowData, index) => (
-                            <tr key={index}>
-                            <td>{rowData.eventName}</td>
-                            <td>{rowData.description}</td>
-                            <td>{rowData.organization}</td>
-                            <td>{rowData.amount}</td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
-                    <p>Total Fines: {totalAmount}</p>
-                    <button onClick={openPaymentModal}>Open Payment Modal</button>
-                    <div className="payment-modal-container">
-                        <PaymentMethodModal
-                            show={isPaymentModalOpen}
-                            onClose={closePaymentModal}
-                            onPaymentMethodSelect={handlePaymentMethodSelection}
-                        />
-                    </div>
-                </div>
+                <Payment
+                    paymentRows={paymentRows}
+                    totalAmount={totalAmount}
+                    openPaymentModal={openPaymentModal}
+                    isPaymentModalOpen={isPaymentModalOpen}
+                    closePaymentModal={closePaymentModal}
+                    handlePaymentMethodSelection={handlePaymentMethodSelection}
+                />
 
              
 
             </div>
+
         </div>
     );
 }

@@ -151,3 +151,43 @@ td.add-payment-button{
     margin-top: 20px;
   }
   
+  .form-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 30px;
+  }
+
+  .fines-form {
+    display: flex;
+    flex-direction: column;
+    border: 2px #1D1B1E solid;
+    height: relative;
+    width: 300px;
+    border-radius: 20px;
+    text-align: left;
+    padding-left: 30px;
+  }
+
+  .fines-form button{
+    float: right;
+    margin: 10px;
+    border-radius: 20px;
+  }
+
+  .fines-form input{
+    width: 80%;
+    height: 20px;
+    border-radius: 20px;
+    margin-top: 5px;
+  }
+  .form-group {
+    margin-bottom: 5px;
+  }
+
+  .form-group label{
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }

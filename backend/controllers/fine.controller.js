@@ -52,10 +52,7 @@ const createFine = async (req, res) => {
             return res.status(400).json({ error: 'Missing required parameter: description' });
         }
         
-        if (!status) {
-            return res.status(400).json({ error: 'Missing required parameter: status' });
-        }
-        
+        const fineStatus = status !== null ? status : false
 
         // Validate that organization reference exists
         const organizationExists = await Organization.findById(organization);
@@ -78,7 +75,7 @@ const createFine = async (req, res) => {
             amount,
             student,
             description,
-            status,
+            status: fineStatus, // Use the adjusted status
             event,
         });
 
