@@ -11,6 +11,7 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
       <div className={`sidebar ${isVisible ? 'visible' : 'hidden'}`}>
         {/* Toggle button within the sidebar */}
         <ul>
+          <SidebarLink href="/" label="Home" />
           <SidebarLink href="/student" label="Student" />
           <SidebarLink href="/course" label="Course" />
           <SidebarLink href="/department" label="Department" />

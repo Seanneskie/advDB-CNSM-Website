@@ -3,6 +3,7 @@
     transition: margin-left 0.3s; /* Add a transition for margin-left */
     text-align: left !important;
     float: left !important;
+    
   }
   
   .sidebar {
@@ -14,6 +15,8 @@
     background-color: #F1F0EC;
     height: 100vh;
     width: 250px;
+    margin-right: 20px;
+
   }
 
   ul{
