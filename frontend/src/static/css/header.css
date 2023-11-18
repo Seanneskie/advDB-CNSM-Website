@@ -1,4 +1,4 @@
-/* Header.css */
+* Header.css */
 
     .header {
         background-color: #333;
@@ -67,10 +67,23 @@
 
 
     .header-container {
+        background-color: #7C090F;
+        display: flex;
+        justify-content: space-between; /* Space between items in the header container */
+        align-items: center;
+        padding: 10px; /* Add padding for better spacing */
+        display: grid;
+        grid-template-columns: auto 1fr; /* Two columns: auto for the button and 1fr for the header content */
+        align-items: center; /* Center items vertically */
+      
+        
+    }
+    .header-content {
         display: flex;
         justify-content: center; /* Horizontally center content */
         align-items: center; /* Vertically center content */
-        background-color: #7C090F;
+        text-align: center; /* Center text in the header content */
+
     }
     .logo {
         max-width: 100px; /* Limit the maximum width of the image */
@@ -108,3 +121,4 @@
       .toggle-button.active .bar:nth-child(3) {
         transform: rotate(45deg);
       }
+
