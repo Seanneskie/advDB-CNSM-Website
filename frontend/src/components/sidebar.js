@@ -1,6 +1,6 @@
 // Sidebar.js
 
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import '../static/css/sidebar.css'
 
 import SidebarLink from './sidebarlink';  // Make sure to provide the correct path  
