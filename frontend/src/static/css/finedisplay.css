@@ -1,0 +1,45 @@
+.fines-display{
+    width: 100%;
+    height: 700px;
+    border-radius: 20px;
+    margin: 10px;
+    text-align: center !important;
+}
+
+.fines-display table{
+    width: 90%;
+    border-collapse: collapse;
+    margin: 0 auto; /* This centers the table horizontally */
+    border: 1px solid #333;
+
+}
+
+.fines-display th {
+    background-color: #7C090F;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #333;
+    color: #F1F0EC;
+}
+
+/* Style the display rows */
+.fines-display td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #333;
+    color: #F1F0EC;
+    background-color: rgba(197, 13, 22, 0.937);
+}       
+
+/* Style even rows with a background color */
+.fines-display tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+.content {
+    display: grid;
+    grid-template-columns: 250px 3fr; /* Define two columns with 1:3 ratio */
+    grid-gap: 20px; /* Add some spacing between columns */
+
+}

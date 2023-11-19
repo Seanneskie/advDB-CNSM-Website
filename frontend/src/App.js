@@ -13,6 +13,7 @@ import Profile from './pages/profile';
 import Event from './pages/event';
 import Fines from './pages/fines';
 import FinesProfile from './pages/fines-profile';
+import DisplayFines from './components/finedisplay';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Dashboard />}>   {/* Content for the Home page */} </Route>
+            <Route path="/fines-view" element={<DisplayFines />}>   {/* Content for the Display Fines  */} </Route>
             <Route path="/about">
               {/* Content for the About page */}
             </Route>

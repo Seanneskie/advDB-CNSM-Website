@@ -1,11 +1,17 @@
 // Sidebar.js
 
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import '../static/css/sidebar.css'
 
 import SidebarLink from './sidebarlink';  // Make sure to provide the correct path  
 
 const Sidebar = ({ isVisible, toggleSidebar }) => {
+  const finesDropdownItems = [
+    { href: '/fines', label: 'Add and Delete Fines' },
+    { href: '/fines-view', label: 'View Fines' },
+    { href: '/paid-fines', label: 'Paid Fines' },
+  ];
+
   return (
     <div>
       <div className={`sidebar ${isVisible ? 'visible' : 'hidden'}`}>
@@ -17,7 +23,7 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
           <SidebarLink href="/department" label="Department" />
           <SidebarLink href="/org" label="Organization" />
           <SidebarLink href="/event" label="Events" />
-          <SidebarLink href="/fines" label="Fines" />
+          <SidebarLink label="Fines" dropdownItems={finesDropdownItems} />
           <SidebarLink href="/project-proposals" label="Project Proposals" />
           <SidebarLink href="/class" label="Classification" />
         </ul>

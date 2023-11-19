@@ -13,10 +13,10 @@
     text-align: left !important;
     float: left !important;
     background-color: #F1F0EC;
-    height: 100vh;
+    height: relative;
     width: 250px;
     margin-right: 20px;
-
+    height: 100vh;
   }
 
   ul{

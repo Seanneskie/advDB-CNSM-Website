@@ -112,7 +112,7 @@ const updateFineById = async (req, res) => {
         if (!name || !organization || !date_of_penalty || !amount || !student || !description || !status || !event) {
             return res.status(400).json({ error: 'Missing one or more required parameters (name, organization, date_of_penalty, amount, student, description, status, event)' });
         }
-
+        
         // Validate that organization reference exists
         const organizationExists = await Organization.findById(organization);
 

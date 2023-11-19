@@ -10,7 +10,7 @@ function AddFines() {
         date_of_penalty: '',
         status: false,
         student: '', // Add student field
-        event: '',
+        event: 'null',
     });
 
     const [students, setStudents] = useState([]);
@@ -95,7 +95,6 @@ function AddFines() {
                     <label>
                         Event Name:
                         <input type='text' name='name' value={fineData.name} onChange={handleChange} />
-                        <input type='text' name='event' value={fineData.event} onChange={handleChange} hidden />
                     </label>
                 </div>
                 <div className='form-group'>
@@ -131,7 +130,7 @@ function AddFines() {
                 </div>
                 <div className='form-group'>
                     <label>
-                        Status:
+                        Status: Paid/Unpaid
                         <input
                             type='checkbox'
                             name='status'
@@ -142,7 +141,7 @@ function AddFines() {
                 </div>
   
 
-                <button type='submit'>Add Fines</button>
+                <button type='submit' id='addfines'>Add Fines</button>
             </form>
         </div>
     );
@@ -155,12 +154,12 @@ function EditFines() {
         description: '',
         organization: '',
         amount: 0,
-        date_of_penalty: '',
+        date_of_penalty: '', // Initialize with an empty string
         status: false,
         student: '',
         event: '',
     });
-
+    
     const [students, setStudents] = useState([]);
     const [organizations, setOrganizations] = useState([]);
     const [finesList, setFinesList] = useState([]);
@@ -195,10 +194,10 @@ function EditFines() {
     const handleSelectChange = (e) => {
         const selectedId = e.target.value;
         setSelectedFineId(selectedId);
-
+    
         // Find the selected fine in the finesList
         const selectedFine = finesList.find((fine) => fine._id === selectedId);
-
+    
         // Update the form fields with the selected fine data
         setFineData({
             name: selectedFine.name,
@@ -211,22 +210,54 @@ function EditFines() {
             event: selectedFine.event,
         });
     };
-
     const handleChange = (e) => {
         const { name, value } = e.target;
+    
+        // Check if the field is 'date_of_penalty' and format the date
+        const formattedValue = name === 'date_of_penalty' ? formatDate(value) : value;
+    
         setFineData((prevData) => ({
             ...prevData,
-            [name]: value,
+            [name]: formattedValue,
         }));
     };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Add your logic to handle the submission of edited fine data
-        // e.g., call an API to update fines in the backend
-        console.log('Submitting edited fine data:', fineData);
+    
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+    
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
     };
-
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        try {
+            // Make a PUT request to the API endpoint with the updated fine data
+            const response = await fetch(`/api/fine/${selectedFineId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(fineData),
+            });
+    
+            if (response.ok) {
+                // Handle successful update
+                console.log('Fine data updated successfully');
+            } else {
+                // Handle error
+                console.error('Failed to update fine data:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error updating fine data:', error);
+        }
+    };
+    
     return (
         <div className='fines-form'>
             <h2>Edit Fines</h2>
@@ -292,7 +323,7 @@ function EditFines() {
                 <div className='form-group'>
                     <label>
                         Date of Penalty:
-                        <input type='date' name='date_of_penalty' value={fineData.date_of_penalty} onChange={handleChange} />
+                        <input type='datetime-local' name='date_of_penalty' value={fineData.date_of_penalty} onChange={handleChange} />
                     </label>
                 </div>
                 <div className='form-group'>
@@ -304,9 +335,10 @@ function EditFines() {
                             checked={fineData.status}
                             onChange={(e) => setFineData((prevData) => ({ ...prevData, status: e.target.checked }))}
                         />
+                        
                     </label>
                 </div>
-                <button type='submit'>Edit Fines</button>
+                <button type='submit' id='editfines'>Edit Fines</button>
             </form>
         </div>
     );
