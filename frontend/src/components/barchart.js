@@ -2,6 +2,8 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const BarChartEx = ({ data }) => {
+  console.log('Received data in BarChartEx:', data);
+  
   return (
     <BarChart
       width={600}
@@ -14,7 +16,7 @@ const BarChartEx = ({ data }) => {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey="value" fill="#8884d8" />
+      <Bar dataKey="count" fill="#780107" />
     </BarChart>
   );
 };
