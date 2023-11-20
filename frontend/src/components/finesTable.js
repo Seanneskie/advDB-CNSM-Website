@@ -122,22 +122,7 @@ const FinesTable = ({ updatePaymentRows }) => {
                         return null; // Skip rendering for paid fines
                     })}
                     {/* Sample row for testing */}
-                    <tr>
-                        <td>
-                            <input
-                                type="checkbox"
-                                checked={selectedRows[fines.length] || false}
-                                onChange={() => handleCheckboxChange(fines.length)}
-                            />
-                        </td>
-                        <td> Intrams Day 1</td>
-                        <td> Morning-Sign in </td>
-                        <td> 01/01/2021 </td>
-                        <td> 9:00 </td>
-                        <td> OMANSS </td>
-                        <td> Unpaid </td>
-                        <td> 150 </td>
-                    </tr>
+               
                 </tbody>
                 <tfoot>
                     <tr>

@@ -14,6 +14,7 @@ import Event from './pages/event';
 import Fines from './pages/fines';
 import FinesProfile from './pages/fines-profile';
 import DisplayFines from './components/finedisplay';
+import FineVisual from './pages/fine-visualization';
 
 function App() {
   return (
@@ -51,6 +52,9 @@ function App() {
             </Route>
             <Route path="/fines" element={<Fines />}>
               {/* Content for the Contact page */}
+            </Route>
+            <Route path="/fines-visual" element={<FineVisual />}>
+              {/* Content for the Fine Visual page */}
             </Route>
             <Route path="/fines-profile/:studentId" element={<FinesProfile />}>
               {/* Content for the Contact page */}

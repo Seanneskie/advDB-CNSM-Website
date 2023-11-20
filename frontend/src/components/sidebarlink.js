@@ -1,29 +1,33 @@
-// SidebarLink.js
-
-import React from 'react';
-import { Link } from 'react-router-dom';  // Make sure to provide the correct path 
-import '../static/css/sidebarlink.css'
+import React, { useState } from 'react';
+import '../static/css/sidebarlink.css';
 
 const SidebarLink = ({ href, label, dropdownItems }) => {
-  const renderDropdown = () => {
-    if (dropdownItems && dropdownItems.length > 0) {
-      return (
-        <ul className="dropdown">
-          {dropdownItems.map((item, index) => (
-            <li key={index}>
-              <Link to={item.href}>{item.label}</Link>
-            </li>
-          ))}
-        </ul>
-      );
-    }
-    return null;
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleToggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
   };
 
   return (
     <li>
-      <Link to={href}>{label}</Link>
-      {renderDropdown()}
+      {dropdownItems ? (
+        <div>
+          <a href='####' className="dropdown-button" onClick={handleToggleDropdown}>
+            {label}
+          </a>
+          {isDropdownOpen && (
+            <ul>
+              {dropdownItems.map((item) => (
+                <li key={item.label}>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ) : (
+        <a href={href}>{label}</a>
+      )}
     </li>
   );
 };

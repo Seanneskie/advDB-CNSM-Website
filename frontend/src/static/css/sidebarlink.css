@@ -4,19 +4,26 @@ li {
     list-style: none;
   }
   
-  a {
-    margin-left: -35px;
-    text-decoration: none;
-    color: #1D1B1E; /* Change the color to your preference */
-    padding: 10px;
-    display: block;
-    transition: background-color 0.3s;
-    height: 30px;
-    font-size: 18px;
-  }
-  
-  a:hover {
-    background-color: #7C090F;
-    color: #F1F0EC; /* Change the background color on hover */
-  }
-  
+  /* sidebarlink.css */
+
+li {
+  list-style: none;
+}
+
+a,
+.dropdown-button {
+  margin-left: -35px;
+  text-decoration: none;
+  color: #1D1B1E;
+  padding: 10px;
+  display: block;
+  transition: background-color 0.3s;
+  height: 30px;
+  font-size: 18px;
+}
+
+a:hover,
+.dropdown-button:hover {
+  background-color: #7C090F;
+  color: #F1F0EC;
+}
