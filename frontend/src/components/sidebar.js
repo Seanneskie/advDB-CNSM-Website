@@ -9,7 +9,7 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
   const finesDropdownItems = [
     { href: '/fines', label: 'Add and Delete Fines' },
     { href: '/fines-view', label: 'View Fines' },
-    { href: '/fines-visual', label: 'Paid Fines' },
+    { href: '/fines-visual', label: 'Data Visualization' },
   ];
 
   return (

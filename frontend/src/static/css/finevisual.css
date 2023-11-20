@@ -1,0 +1,19 @@
+/* finevisual.css */
+h1#finesh1 {
+    color: black
+}
+.charts-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Adjust the gap between chart containers */
+  }
+  
+  .chart-container {
+    border: 1px solid #ddd; /* Add a border for visualization */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  }
+  
+  /* Add more styling as needed */
+  

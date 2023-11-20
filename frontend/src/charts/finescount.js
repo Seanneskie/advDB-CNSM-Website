@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import BarChartEx from '../components/barchart';
 
-const FinesCount = () => {
+const FinesCount = ({ onCountsReceived }) => {
   const [paidFinesCount, setPaidFinesCount] = useState(0);
   const [unpaidFinesCount, setUnpaidFinesCount] = useState(0);
 
@@ -17,9 +17,12 @@ const FinesCount = () => {
 
         setPaidFinesCount(paidCount);
         setUnpaidFinesCount(unpaidCount);
+
+        // Pass the counts to the parent component
+        onCountsReceived({ paid: paidCount, unpaid: unpaidCount });
       })
       .catch((error) => console.error('Error fetching fines data:', error));
-  }, []);
+  }, [onCountsReceived]);
 
   // Prepare data for the BarChart
   const barChartData = [
@@ -29,8 +32,7 @@ const FinesCount = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row' }}>
-
-      <BarChartEx data={barChartData} /> {/* Include the BarChartEx component here */}
+      <BarChartEx data={barChartData} />
     </div>
   );
 };

@@ -1,9 +1,8 @@
 // IncomeSummary.js
 import React, { useEffect, useState } from 'react';
-import BarChartEx from '../components/barchart'; // Import the BarChartEx component
+import BarChartEx from '../components/barchart';
 
-
-const IncomeSummary = () => {
+const IncomeSummary = ({ onIncomeReceived }) => {
   const [paidFinesTotal, setPaidFinesTotal] = useState(0);
   const [unpaidFinesTotal, setUnpaidFinesTotal] = useState(0);
 
@@ -18,9 +17,12 @@ const IncomeSummary = () => {
 
         setPaidFinesTotal(paidTotal);
         setUnpaidFinesTotal(unpaidTotal);
+
+        // Pass the income to the parent component
+        onIncomeReceived({ paid: paidTotal, unpaid: unpaidTotal });
       })
       .catch((error) => console.error('Error fetching fines data:', error));
-  }, []);
+  }, [onIncomeReceived]);
 
   // Prepare data for the BarChart
   const barChartData = [
@@ -31,7 +33,7 @@ const IncomeSummary = () => {
   return (
     <div>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
-        <BarChartEx data={barChartData} /> {/* Include the BarChartEx component here */}
+        <BarChartEx data={barChartData} />
       </div>
     </div>
   );
