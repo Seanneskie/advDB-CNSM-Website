@@ -15,6 +15,8 @@ import Fines from './pages/fines';
 import FinesProfile from './pages/fines-profile';
 import DisplayFines from './components/finedisplay';
 import FineVisual from './pages/fine-visualization';
+import Proposal from './pages/proposal';
+import ProposalView from './components/proposalview';
 
 function App() {
   return (
@@ -51,6 +53,12 @@ function App() {
               {/* Content for the Contact page */}
             </Route>
             <Route path="/fines" element={<Fines />}>
+              {/* Content for the Contact page */}
+            </Route>
+            <Route path="/proposal" element={<Proposal />}>
+              {/* Content for the Contact page */}
+            </Route>
+            <Route path="/proposal/:id" element={<ProposalView />}>
               {/* Content for the Contact page */}
             </Route>
             <Route path="/fines-visual" element={<FineVisual />}>

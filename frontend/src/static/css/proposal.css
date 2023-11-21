@@ -1,0 +1,13 @@
+.content {
+    display: flex;
+  }
+  
+  .container-proposal {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Adjust column sizes as needed */
+    gap: 20px; /* Adjust gap between columns */
+    padding: 20px;
+  }
+  
+  /* Add any additional styling for ProposalList and ProposalProfile if needed */
+  

@@ -24,7 +24,7 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
           <SidebarLink href="/org" label="Organization" />
           <SidebarLink href="/event" label="Events" />
           <SidebarLink label="Fines" dropdownItems={finesDropdownItems} />
-          <SidebarLink href="/project-proposals" label="Project Proposals" />
+          <SidebarLink href="/proposal" label="Project Proposals" />
           <SidebarLink href="/class" label="Classification" />
         </ul>
       </div>
