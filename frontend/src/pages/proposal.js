@@ -3,7 +3,7 @@ import  '../static/css/proposal.css'
 import Header from '../components/header';
 import Sidebar from '../components/sidebar';
 import ProposalList from '../components/proposalist';
-import ProposalProfile from '../components/proposalview';
+import ProposalView from '../components/proposalview';
 
 
 
@@ -35,7 +35,7 @@ function Proposal() {
               
                 <div className='container-proposal'>
                     <ProposalList />
-                    <ProposalProfile proposal={sampleProposal} />
+                    <ProposalView proposal={sampleProposal} />
                  
                 </div>
                

@@ -7,7 +7,7 @@ const { Student } = require('../models/studentModel'); // Import the Student mod
 // GET all events
 const getEventsAll = async (req, res) => {
     try {
-        const events = await Events.find({}).sort({ time_start: 1 });
+        const events = await Events.find({}).sort({ event_date: 1 });
         res.status(200).json(events);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -17,11 +17,11 @@ const getEventsAll = async (req, res) => {
 // CREATE event
 const createEvent = async (req, res) => {
     try {
-        const { name, org, time_start, time_end, facilitator, description, location } = req.body;
+        const { name, org, event_date, facilitator, description, location } = req.body;
 
         // Check if any of the required parameters are missing
-        if (!name || !org || !time_start || !time_end || !facilitator) {
-            return res.status(400).json({ error: 'Missing one or more required parameters (name, org, time_start, time_end, facilitator)' });
+        if (!name || !org || !event_date || !facilitator) {
+            return res.status(400).json({ error: 'Missing one or more required parameters (name, org, event_date, facilitator)' });
         }
 
         // Validate that organization and facilitator references exist
@@ -35,8 +35,7 @@ const createEvent = async (req, res) => {
         const event = new Events({
             name,
             org,
-            time_start,
-            time_end,
+            event_date,
             facilitator,
             description,
             location,
@@ -67,11 +66,11 @@ const getEventById = async (req, res) => {
 const updateEventById = async (req, res) => {
     const id = req.params.id;
     try {
-        const { name, org, time_start, time_end, facilitator, description, location } = req.body;
+        const { name, org, event_date, facilitator, description, location } = req.body;
 
         // Check if any of the required parameters are missing
-        if (!name || !org || !time_start || !time_end || !facilitator) {
-            return res.status(400).json({ error: 'Missing one or more required parameters (name, org, time_start, time_end, facilitator)' });
+        if (!name || !org || !event_date || !facilitator) {
+            return res.status(400).json({ error: 'Missing one or more required parameters (name, org, event_date, facilitator)' });
         }
 
         // Validate that organization and facilitator references exist

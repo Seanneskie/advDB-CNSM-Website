@@ -12,8 +12,7 @@ const eventSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Organization'
     },
-    time_start: Date,
-    time_end: Date,
+    event_date: Date,
     facilitator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Student'

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../static/css/propview.css';
 
-const ProposalProfile = ({ proposal }) => {
+const ProposalView = ({ proposal }) => {
   const {
     proponent,
     start_date,
@@ -27,4 +27,4 @@ const ProposalProfile = ({ proposal }) => {
   );
 };
 
-export default ProposalProfile;
+export default ProposalView;
