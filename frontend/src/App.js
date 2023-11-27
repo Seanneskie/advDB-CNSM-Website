@@ -16,7 +16,9 @@ import FinesProfile from './pages/fines-profile';
 import DisplayFines from './components/finedisplay';
 import FineVisual from './pages/fine-visualization';
 import Proposal from './pages/proposal';
-import ProposalView from './components/proposalview';
+import ProposalView from './components/proposalmodal';
+
+
 
 function App() {
   return (
