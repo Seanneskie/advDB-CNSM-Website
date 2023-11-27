@@ -74,7 +74,6 @@ function FinesProfile() {
     return (
         <div className='container-1'>
             <Header />
-            <h1>Fines Profile</h1>
             <div className='main-fine'>
              <div className='student-profile'>
                     <div className='container-profile'>
