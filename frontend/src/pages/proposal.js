@@ -36,7 +36,7 @@ function Proposal() {
                 <div className='container-proposal'>
                     <ProposalList />
                     <ProposalView proposal={sampleProposal} />
-                 
+           
                 </div>
                
                 
