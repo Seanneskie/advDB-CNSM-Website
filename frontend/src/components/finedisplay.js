@@ -9,6 +9,8 @@ function DisplayFines() {
   const [studentsMap, setStudentsMap] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
+  const [eventsMap, setEventsMap] = useState({});
+
 
   useEffect(() => {
     // Fetch fines data when the component mounts
@@ -18,7 +20,7 @@ function DisplayFines() {
         setFinesList(data);
       })
       .catch((error) => console.error('Error fetching fines data:', error));
-
+  
     // Fetch student data to create a mapping of student IDs to names
     fetch('/api/student')
       .then((response) => response.json())
@@ -30,8 +32,20 @@ function DisplayFines() {
         setStudentsMap(studentsMapping);
       })
       .catch((error) => console.error('Error fetching student data:', error));
+  
+    // Fetch event data to create a mapping of event IDs to names
+    fetch('/api/event')
+      .then((response) => response.json())
+      .then((data) => {
+        const eventsMapping = {};
+        data.forEach((event) => {
+          eventsMapping[event._id] = event.name;
+        });
+        setEventsMap(eventsMapping);
+      })
+      .catch((error) => console.error('Error fetching event data:', error));
   }, []);
-
+  
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -107,7 +121,7 @@ function DisplayFines() {
                   <td>{fine.amount}</td>
                   <td>{fine.date_of_penalty}</td>
                   <td>{fine.status ? 'Paid' : 'Unpaid'}</td>                 
-                  <td>{fine.event}</td>
+                  <td>{eventsMap[fine.event]}</td>
                 </tr>
               ))}
             </tbody>
