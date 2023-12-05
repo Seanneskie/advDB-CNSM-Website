@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import '../static/css/finedisplay.css';
-import Header from '../components/header';
-import Sidebar from '../components/sidebar';
 import ModalButton from '../components/finesbuttonpayment_modal';
-import Modal from '../components/finespayment_modal';
-import PaidFinesDisplay from '../components/PaidFinesDisplay'; // Update the import statement for PaidFinesDisplay
 
-
-function DisplayFines() {
-  const [finesList, setFinesList] = useState([]);
+function PaidFinesDisplay() {
+  const [paidFines, setPaidFines] = useState([]);
   const [studentsMap, setStudentsMap] = useState({});
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [finesList, setFinesList] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
   const [searchFilter, setSearchFilter] = useState('');
-  const [selectedFines, setSelectedFines] = useState([]); // Add this line
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    // Fetch only unpaid fines data when the component mounts
-    fetch('/api/fine?status=false')
+    // Fetch paid fines data when the component mounts
+    fetch('/api/fine?status=true')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Fetched paid fines data:', data);
+        setPaidFines(data);
+      })
+      .catch((error) => console.error('Error fetching paid fines data:', error));
+
+    // Fetch fines data when the component mounts (for filtering)
+    fetch('/api/fine?status=true')
       .then((response) => response.json())
       .then((data) => {
         console.log('Fetched fines data:', data);
@@ -36,11 +39,7 @@ function DisplayFines() {
         setStudentsMap(studentsMapping);
       })
       .catch((error) => console.error('Error fetching student data:', error));
-  }, []); // End of the first useEffect block
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  }, []);
 
   const requestSort = (key) => {
     let direction = 'ascending';
@@ -48,6 +47,22 @@ function DisplayFines() {
       direction = 'descending';
     }
     setSortConfig({ key, direction });
+    // Add your sorting logic here using the key and direction
+  };
+
+  const handleSearchFilter = (event) => {
+    setSearchFilter(event.target.value.toUpperCase());
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const getClassNamesFor = (name) => {
+    if (!sortConfig) {
+      return;
+    }
+    return sortConfig.key === name ? sortConfig.direction : undefined;
   };
 
   // Filter fines based on the search filter and unpaid status
@@ -58,16 +73,9 @@ function DisplayFines() {
     return (
       studentName &&
       studentName.toLowerCase().includes(filterValue) &&
-      fine.status === false // Only include unpaid fines
+      fine.status === true // Only include unpaid fines
     );
   });
-
-  const getClassNamesFor = (name) => {
-    if (!sortConfig) {
-      return;
-    }
-    return sortConfig.key === name ? sortConfig.direction : undefined;
-  };
 
   // Sorting fines based on the current sort configuration
   const sortedFines = [...filteredFines].sort((a, b) => {
@@ -80,59 +88,13 @@ function DisplayFines() {
     return 0;
   });
 
-  // Function to handle the search filter
-  const handleSearchFilter = (event) => {
-    setSearchFilter(event.target.value.toUpperCase());
-  };
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
-
-  // Function to handle the checkbox change
-  const handleCheckboxChange = (fineId) => {
-    // Check if the fineId is already in the selectedFines array
-    if (selectedFines.includes(fineId)) {
-      // If yes, remove it from the array
-      setSelectedFines((prevSelectedFines) =>
-        prevSelectedFines.filter((id) => id !== fineId)
-      );
-    } else {
-      // If not, add it to the array
-      setSelectedFines((prevSelectedFines) => [...prevSelectedFines, fineId]);
-    }
-  };
-
   return (
-    <div>
-      <Header toggleSidebar={toggleSidebar} />
-      <div className='content'>
-        <Sidebar isVisible={isSidebarOpen} toggleSidebar={toggleSidebar} />
-        <div>
-        <div className='fines-display'>
-          <h2>Fines List</h2>
+    <div className='fines-display'>
+      <h2>Paid Fines List</h2>
 
-          {/* Search input field */}
-          <input
-            type="text"
-            id="myInput"
-            value={searchFilter}
-            onChange={handleSearchFilter}
-            placeholder="Search for student names..."
-          />
-
-          {/* Clear button for search */}
-          <button onClick={() => setSearchFilter('')}>Clear</button>
-
-          {/* Button to show the modal */}
-          <ModalButton toggleModal={toggleModal} />
-
-          <table>
+<table>
             <thead>
               <tr>
-                <th></th>
                 <th onClick={() => requestSort('student')} className={getClassNamesFor('student')}>
                   Student
                 </th>
@@ -162,13 +124,6 @@ function DisplayFines() {
             <tbody>
               {sortedFines.map((fine) => (
                 <tr key={fine._id}>
-                  <td>
-                    {/* If the {fine.status ? 'Paid' : 'Unpaid'} is paid do not display the checkbox but if unpaid display */}
-                    <input
-                  type="checkbox"
-                  onChange={() => handleCheckboxChange(fine._id)}
-                />
-                  </td>
                   <td>{studentsMap[fine.student]}</td>
                   <td>{fine.name}</td>
                   <td>{fine.description}</td>
@@ -181,22 +136,8 @@ function DisplayFines() {
               ))}
             </tbody>
           </table>
-{/* Modal */}
-      {isModalOpen && (
-        <Modal
-          toggleModal={toggleModal}
-          selectedFines={selectedFines}
-        />
-      )}
-          
-        </div>
-        {/* Paid Fines Display */}
-          <PaidFinesDisplay paidFines={sortedFines} studentsMap={studentsMap} />
-</div>
-      </div>
     </div>
   );
 }
 
-
-export default DisplayFines;
+export default PaidFinesDisplay;
