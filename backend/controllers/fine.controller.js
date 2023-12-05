@@ -162,10 +162,34 @@ const deleteFineById = async (req, res) => {
     }
 };
 
+// Update fine status
+const updateFineStatus = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const { status } = req.body;
+
+        // Check if the required parameter is missing
+        if (status === undefined) {
+            return res.status(400).json({ error: 'Missing required parameter: status' });
+        }
+
+        const fine = await Fines.findByIdAndUpdate(id, { status }, { new: true });
+
+        if (!fine) {
+            return res.status(404).json({ message: 'Fine not found' });
+        }
+
+        res.status(200).json(fine);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 module.exports = {
     getFinesAll,
     createFine,
     getFineById,
     updateFineById,
     deleteFineById,
+    updateFineStatus,
 };

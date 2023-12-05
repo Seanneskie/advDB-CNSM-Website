@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Form, useParams } from 'react-router-dom';
 import '../static/css/fines.css';
 import Header from '../components/header';
 import PaymentMethodModal from '../components/paymentmodal';
@@ -72,10 +72,11 @@ function FinesProfile() {
         return <div>Loading...</div>;
     }
     return (
+        
         <div className='container-1'>
             <Header />
             <div className='main-fine'>
-             <div className='student-profile'>
+                <div className='student-profile'>
                     <div className='container-profile'>
                         <h1> Profile </h1>
                         <br></br>
