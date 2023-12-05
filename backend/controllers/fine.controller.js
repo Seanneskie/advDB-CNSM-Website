@@ -3,7 +3,7 @@ const router = express.Router();
 const { Fines } = require('../models/finesModel');
 const { Organization } = require('../models/organizationModel');
 const { Student } = require('../models/studentModel');
-const { Events } = require('../models/eventsModel');
+const { Event } = require('../models/eventsModel');
 
 // GET all fines
 // finesController.js

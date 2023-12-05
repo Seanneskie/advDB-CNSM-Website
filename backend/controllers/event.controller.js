@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { Events } = require('../models/eventsModel'); // Model Path
+const { Event } = require('../models/eventsModel'); // Model Path
 const { Organization } = require('../models/organizationModel'); // Import the Organization model
 const { Student } = require('../models/studentModel'); // Import the Student model
 
 // GET all events
 const getEventsAll = async (req, res) => {
     try {
-        const events = await Events.find({}).sort({ event_date: 1 });
+        const events = await Event.find({}).sort({ event_date: 1 });
         res.status(200).json(events);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -32,7 +32,7 @@ const createEvent = async (req, res) => {
             return res.status(400).json({ error: 'Invalid organization or facilitator reference' });
         }
 
-        const event = new Events({
+        const event = new Event({
             name,
             org,
             event_date,
@@ -52,7 +52,7 @@ const createEvent = async (req, res) => {
 const getEventById = async (req, res) => {
     const id = req.params.id;
     try {
-        const event = await Events.findById(id);
+        const event = await Event.findById(id);
         if (!event) {
             return res.status(404).json({ message: 'Event not found' });
         }
@@ -81,7 +81,7 @@ const updateEventById = async (req, res) => {
             return res.status(400).json({ error: 'Invalid organization or facilitator reference' });
         }
 
-        const event = await Events.findByIdAndUpdate(id, req.body, { new: true });
+        const event = await Event.findByIdAndUpdate(id, req.body, { new: true });
         if (!event) {
             return res.status(404).json({ message: 'Event not found' });
         }
@@ -95,7 +95,7 @@ const updateEventById = async (req, res) => {
 const deleteEventById = async (req, res) => {
     const id = req.params.id;
     try {
-        const event = await Events.findByIdAndRemove(id);
+        const event = await Event.findByIdAndRemove(id);
         if (!event) {
             return res.status(404).json({ message: 'Event not found' });
         }

@@ -13,7 +13,10 @@ function DisplayFines() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
   const [searchFilter, setSearchFilter] = useState('');
-  const [selectedFines, setSelectedFines] = useState([]); // Add this line
+ const [selectedFines, setSelectedFines] = useState([]); // Add this line
+ const [eventsMap, setEventsMap] = useState({});
+
+
 
   useEffect(() => {
     // Fetch only unpaid fines data when the component mounts
@@ -24,7 +27,7 @@ function DisplayFines() {
         setFinesList(data);
       })
       .catch((error) => console.error('Error fetching fines data:', error));
-
+  
     // Fetch student data to create a mapping of student IDs to names
     fetch('/api/student')
       .then((response) => response.json())
@@ -36,8 +39,18 @@ function DisplayFines() {
         setStudentsMap(studentsMapping);
       })
       .catch((error) => console.error('Error fetching student data:', error));
-  }, []); // End of the first useEffect block
-
+     fetch('/api/event')
+      .then((response) => response.json())
+      .then((data) => {
+        const eventsMapping = {};
+        data.forEach((event) => {
+          eventsMapping[event._id] = event.name;
+        });
+        setEventsMap(eventsMapping);
+      })
+      .catch((error) => console.error('Error fetching event data:', error));
+  }, []);
+  
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };

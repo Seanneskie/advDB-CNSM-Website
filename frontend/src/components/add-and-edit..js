@@ -10,12 +10,12 @@ function AddFines() {
         date_of_penalty: '',
         status: false,
         student: '', // Add student field
-        event: 'null',
+        event: '',
     });
 
     const [students, setStudents] = useState([]);
     const [organizations, setOrganizations] = useState([]);
-
+    const [events, setEvents] = useState([]);
 
     useEffect(() => {
         // Fetch student data when the component mounts
@@ -34,19 +34,41 @@ function AddFines() {
                 setOrganizations(data);
             })
             .catch((error) => console.error('Error fetching organization data:', error));
+        
+        fetch('/api/event')
+            .then((response) => response.json())
+            .then((data) => {
+                setEvents(data);
+            })
+            .catch((error) => console.error('Error fetching event data:', error));
+
     }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFineData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
+    
+        // Check if the changed field is the "event" dropdown
+        if (name === 'event') {
+            // Find the selected event based on its ID
+            const selectedEvent = events.find((event) => event._id === value);
+    
+            // Update the fineData with the selected event's name
+            setFineData((prevData) => ({
+                ...prevData,
+                [name]: value,
+                name: selectedEvent ? selectedEvent.name : '', // Set name to event name
+            }));
+        } else {
+            // For other fields, update fineData as usual
+            setFineData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }));
+        }
     };
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        console.log(fineData)
         // Add your logic to handle the submission of fine data
         // Call the API to add fines to the backend
         fetch('/api/fine', {
@@ -93,10 +115,18 @@ function AddFines() {
                 </div>
                 <div className='form-group'>
                     <label>
-                        Event Name:
-                        <input type='text' name='name' value={fineData.name} onChange={handleChange} />
+                        Event:
+                        <select name='event' value={fineData.event} onChange={handleChange}>
+                            <option value=''>Select Event</option>
+                            {events.map((event) => (
+                                <option key={event._id} value={event._id}>
+                                    {event.name}
+                                </option>
+                            ))}
+                        </select>
                     </label>
                 </div>
+
                 <div className='form-group'>
                     <label>
                         Description:
@@ -189,6 +219,8 @@ function EditFines() {
                 setFinesList(data);
             })
             .catch((error) => console.error('Error fetching fines data:', error));
+
+        
     }, []);
 
     const handleSelectChange = (e) => {
@@ -237,6 +269,7 @@ function EditFines() {
         e.preventDefault();
     
         try {
+            console.log(fineData)
             // Make a PUT request to the API endpoint with the updated fine data
             const response = await fetch(`/api/fine/${selectedFineId}`, {
                 method: 'PUT',
