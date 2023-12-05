@@ -13,8 +13,8 @@ function DisplayFines() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [sortConfig, setSortConfig] = useState({ key: '', direction: '' });
   const [searchFilter, setSearchFilter] = useState('');
- const [selectedFines, setSelectedFines] = useState([]); // Add this line
- const [eventsMap, setEventsMap] = useState({});
+  const [selectedFines, setSelectedFines] = useState([]); // Add this line
+  const [eventsMap, setEventsMap] = useState({});
 
 
 
@@ -115,6 +115,33 @@ function DisplayFines() {
     } else {
       // If not, add it to the array
       setSelectedFines((prevSelectedFines) => [...prevSelectedFines, fineId]);
+    }
+  };
+
+  const updatefinestatus = async (fineId) => {
+    try {
+      // Make a PATCH request to update the status to Paid
+      const response = await fetch(`/api/fine/${fineId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: true }), // Assuming the API accepts 'status' as the field for updating the status
+      });
+
+      if (response.ok) {
+        // Update the local state to reflect the change
+        setFinesList((prevFinesList) =>
+          prevFinesList.map((fine) =>
+            fine._id === fineId ? { ...fine, status: true } : fine
+          )
+        );
+        console.log('Fine status updated to Paid successfully');
+      } else {
+        console.error('Failed to update fine status to Paid');
+      }
+    } catch (error) {
+      console.error('Error updating fine status:', error);
     }
   };
 
